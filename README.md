@@ -3,14 +3,54 @@ Clean up RARBG watermarks
 
 ## Overview
 
-Several years ago I made this quick script to clean up RARBG watermarks (covers) and their ads in the subs.
 After backing up an old computer I stumbled upon this and figured someone else may benefit.
+Several years ago I made this quick script to clean up RARBG "watermarks" (covers attachments and ads in subs).
 
-### Requirements:
+
+## Requirements
 
 * Requires python 2.7+ (not 3.x).
 
 * Requires MKVToolNix to be installed (mkvmerge + mkvextract are used).
+
+
+## Usage
+
+By default it does dry run, to actaully do the clean up you need pass "--no-test-run"
+
+```
+usage: clean.py [-h] [-l | --no-log] [-d DIR] [-t | --no-test-run]
+                [-p | --no-preserve-timestamp] [-m MKVMERGE_BIN]
+                [-e MKVEXTRACT_BIN] [-v]
+
+Clean up RARBG subs and removes attachments from MKV files.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -l, --log             Create log file.
+  --no-log              Do not create log file.
+  -d DIR, --dir DIR     Pass file or folder to process
+  -t, --test-run        Do not perform actions on files.
+  --no-test-run         Perform actions on files.
+  -p, --preserve-timestamp
+                        Use source timestamp for remux file.
+  --no-preserve-timestamp
+                        Do not use source timestamp for remux file.
+  -m MKVMERGE_BIN, --mkvmerge-bin MKVMERGE_BIN
+                        Path to mkvmerge binary.
+  -e MKVEXTRACT_BIN, --mkvextract-bin MKVEXTRACT_BIN
+                        Path to mkvextract binary.
+  -v, --verbose         Be verbose with output.
+  ```
+
+
+`python clean.py`
+
+Will check the .mkv files in the same directory of the script.
+
+You can specify a file or folder (recurisvely) to process:
+
+`python clean.py -d "D:\TV"`
 
 
 ### Workflow
